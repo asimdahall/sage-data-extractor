@@ -25,7 +25,7 @@ export default () => {
     setIsExtracting(true);
 
     axios
-      .post("http://localhost:8000/extract/data", formData, {
+      .post(`${process.env.API_KEY}/extract/data`, formData, {
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json"

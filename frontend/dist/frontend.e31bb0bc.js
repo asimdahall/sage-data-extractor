@@ -63734,7 +63734,7 @@ var _default = function _default() {
     e.preventDefault();
     setIsExtracting(true);
 
-    _axios.default.post("http://localhost:8000/extract/data", formData, {
+    _axios.default.post("".concat("http://localahost:8000", "/extract/data"), formData, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
@@ -63900,7 +63900,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63727" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54936" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
