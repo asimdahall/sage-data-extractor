@@ -1,0 +1,60 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn add @chakra-ui/corex
+
+PATH: 
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/asim/Desktop/sage-data-extractor/frontend/node_modules/.bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/asim/flutter/bin:/Users/asim/Library/Android/sdk:/Library/Frameworks/Python.framework/Versions/3.8/bin
+
+Yarn version: 
+  1.16.0
+
+Node version: 
+  10.16.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.npmjs.org/@chakra-ui%2fcorex: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66091:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129590:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130562:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:130484:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1129:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
+
+npm manifest: 
+  {
+    "name": "frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "parcel index.html",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "@chakra-ui/core": "^0.6.1",
+      "@emotion/core": "^10.0.28",
+      "@emotion/styled": "^10.0.27",
+      "chakra-ui": "^0.3.9",
+      "emotion-theming": "^10.0.27",
+      "react": "^16.13.0",
+      "react-dom": "^16.13.0"
+    },
+    "devDependencies": {
+      "parcel-bundler": "^1.12.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
