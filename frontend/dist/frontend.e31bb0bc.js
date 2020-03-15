@@ -63707,6 +63707,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var carrierOptions = [{
   name: "Travelers",
   value: "travelers"
+}, {
+  name: "Geico",
+  value: "geico"
 }];
 
 var _default = function _default() {
@@ -63734,7 +63737,7 @@ var _default = function _default() {
     e.preventDefault();
     setIsExtracting(true);
 
-    _axios.default.post("".concat("http://localahost:8000", "/extract/data"), formData, {
+    _axios.default.post("".concat("http://localhost:8000", "/extract/data"), formData, {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
@@ -63787,7 +63790,6 @@ var _default = function _default() {
   }))), _react.default.createElement(_core.FormControl, {
     isRequired: true
   }, _react.default.createElement(_core.Input, {
-    type: "email",
     id: "email",
     name: "email",
     placeholder: "example@example.cpm",
@@ -63900,7 +63902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54936" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61544" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

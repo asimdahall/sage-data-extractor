@@ -1,6 +1,6 @@
-import extractDataFromHtml from "./extractDataFromHtml";
+const extractDataFromHtml = require("./extractDataFromHtml.js");
 
-export default async ({ page, email, password }) => {
+module.exports = async ({ page, email, password }) => {
   await page.goto("https://www.travelers.com/login/#/");
   await page.type("[ng-model = userName]", email);
   await page.type("[ng-model = password]", password);

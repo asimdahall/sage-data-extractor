@@ -1,4 +1,4 @@
-import cheerio from "cheerio";
+const cheerio = require("cheerio");
 
 const getTextFromElement = element =>
   element
@@ -119,7 +119,7 @@ const getVehicleSpecificCoverages = $ => {
   return vehicleSpecificCoverages;
 };
 
-export default html => {
+module.exports = html => {
   const $ = cheerio.load(html);
   const final = {
     basicDetails: getBasicInfo($),
