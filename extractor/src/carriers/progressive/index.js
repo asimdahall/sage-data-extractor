@@ -6,21 +6,24 @@ module.exports = async ({ page, email, password, res }) => {
     password
   });
   let response;
-  await page.goto("https://www.geico.com/account/");
+ // await page.goto("https://account.progressive.com/access/login");
+  await page.goto("https://account.progressive.com/access/login",  {waitUntil: 'networkidle2'});
+//  await page.waitFor(500);
+  await page.type("input[data-pgr-id='inputUserName']", email);
   await page.waitFor(500);
-  await page.type("input[name = userName]", email);
-  await page.waitFor(500);
-  await page.type("input[name = userPassword]", password);
+  await page.type("input[data-pgr-id='inputPassword']", password);
   await page.waitFor(500);
   await page.keyboard.press("\n");
+  //await page.waitFor(30000);
+  //await page.waitForNavigation(); 
   await page.on("response", data => {
     console.log('all the url', data._url);
      page.waitFor(10000);
 
-    if (data._url.includes("dashboard/init-home")) {
+    if (data._url.includes("/api/v1/account?billingFlag=true")) {
       data.json().then(async d => {
         fs.writeFile(
-          "gieco.json",
+          "progressive.json",
           JSON.stringify(d._payload.policyInfos),
           "utf8",
           () => {
@@ -32,6 +35,7 @@ module.exports = async ({ page, email, password, res }) => {
   });
 
   return response;
+
   //   await page.click("#MAIN_NAVIGATION_ID-policies");
   //   const policyInfoSelector = ["div.action-menu > a:nth-child(2)"];
   //   await page.waitForSelector(policyInfoSelector);

@@ -5,7 +5,8 @@ import { Select, FormControl, FormLabel, Button, Input } from "@chakra-ui/core";
 
 const carrierOptions = [
   { name: "Travelers", value: "travelers" },
-  { name: "Geico", value: "geico" }
+  { name: "Geico", value: "geico" },
+  { name: "Progressive", value: "progressive" }
 ];
 
 export default () => {
