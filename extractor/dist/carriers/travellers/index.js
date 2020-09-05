@@ -2,18 +2,13 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _extractDataFromHtml = _interopRequireDefault(require("./extractDataFromHtml"));
+var extractDataFromHtml = require("./extractDataFromHtml.js");
 
-var _default = /*#__PURE__*/function () {
+module.exports = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(_ref2) {
     var page, email, password, policyInfoSelector, htmlContent;
     return _regenerator["default"].wrap(function _callee$(_context) {
@@ -68,7 +63,7 @@ var _default = /*#__PURE__*/function () {
           case 24:
             htmlContent = _context.sent;
             _context.next = 27;
-            return (0, _extractDataFromHtml["default"])(htmlContent);
+            return extractDataFromHtml(htmlContent);
 
           case 27:
             return _context.abrupt("return", _context.sent);
@@ -85,5 +80,3 @@ var _default = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-
-exports["default"] = _default;

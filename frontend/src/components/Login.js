@@ -15,7 +15,7 @@ export default ({ handleChange, formData }) => {
     <form>
       <FormControl isRequired>
         <Input
-          type="email"
+          type="text"
           id="email"
           name="email"
           placeholder="example@example.cpm"

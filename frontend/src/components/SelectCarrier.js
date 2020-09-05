@@ -3,7 +3,13 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/core";
 import { Select, FormControl, FormLabel, Button, Input } from "@chakra-ui/core";
 
-const carrierOptions = [{ name: "Travelers", value: "travelers" }];
+const carrierOptions = [
+  { name: "Travelers", value: "travelers" },
+  { name: "Geico", value: "geico" },
+  { name: "Progressive", value: "progressive" },
+  { name: "Next Gen Leads", value: "nextgenleads" },
+  { name: "All Web Leads", value: "allwebleads" }
+];
 
 export default () => {
   const [formData, setFormData] = React.useState({
@@ -81,7 +87,6 @@ export default () => {
       </FormControl>
       <FormControl isRequired>
         <Input
-          type="email"
           id="email"
           name="email"
           placeholder="example@example.cpm"
