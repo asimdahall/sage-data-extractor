@@ -8,6 +8,8 @@ const bodyParser = require("body-parser");
 const travelers = require("./carriers/travellers/index.js");
 const geico = require("./carriers/geico/index.js");
 const progressive = require("./carriers/progressive/index.js");
+const nextGenLeads = require("./carriers/nextgenleads/index.js");
+const allWebLeads = require("./carriers/allwebleads/index.js");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 puppeteer.use(StealthPlugin());
@@ -39,7 +41,9 @@ app.use(bodyParser.json());
 const carrierExtractorMap = {
   travelers: travelers,
   geico: geico,
-  progressive: progressive
+  progressive: progressive,
+  nextgenleads: nextGenLeads,
+  allwebleads: allWebLeads
 };
 console.log('this is carrierextract map', carrierExtractorMap);
 app.get("*", (req, res) => {
@@ -69,16 +73,17 @@ app.post("/extract/data", async (req, res) => {
       password,
       res
     });
-    console.log('reponse received.');
-    page.waitFor(30000);
-    browser.close();
+    await console.log('reponse received.');
+    //await page.waitFor(30000);
+    await browser.close();
+    res.json(response);
   } catch (e) {
     console.log(e);
-    // res.status(500).json({
-    //   success: false,
-    //   message:
-    //     "There was a problem while logging in/extracting data. Please try again."
-    // });
+    res.status(500).json({
+      success: false,
+      message:
+        "There was a problem while logging in/extracting data. Please try again."
+    });
   }
 });
 

@@ -1,13 +1,6 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _cheerio = _interopRequireDefault(require("cheerio"));
+var cheerio = require("cheerio");
 
 var getTextFromElement = function getTextFromElement(element) {
   return element.text().trim().replace(/\s\s+/g, " ").replace(/(\r\n|\n|\r)/gm, "");
@@ -88,9 +81,8 @@ var getVehicleSpecificCoverages = function getVehicleSpecificCoverages($) {
   return vehicleSpecificCoverages;
 };
 
-var _default = function _default(html) {
-  var $ = _cheerio["default"].load(html);
-
+module.exports = function (html) {
+  var $ = cheerio.load(html);
   var _final = {
     basicDetails: getBasicInfo($),
     discounts: getDiscounts($),
@@ -100,5 +92,3 @@ var _default = function _default(html) {
   };
   return _final;
 };
-
-exports["default"] = _default;

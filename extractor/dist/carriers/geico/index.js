@@ -2,16 +2,15 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
+
+var _stringify = _interopRequireDefault(require("@babel/runtime/core-js/json/stringify"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _default = /*#__PURE__*/function () {
+var fs = require("fs");
+
+module.exports = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(_ref2) {
     var page, email, password, res, response;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
@@ -53,6 +52,9 @@ var _default = /*#__PURE__*/function () {
           case 16:
             _context2.next = 18;
             return page.on("response", function (data) {
+              console.log('all the url', data._url);
+              page.waitFor(10000);
+
               if (data._url.includes("dashboard/init-home")) {
                 data.json().then( /*#__PURE__*/function () {
                   var _ref3 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(d) {
@@ -60,7 +62,9 @@ var _default = /*#__PURE__*/function () {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            res.json(d);
+                            fs.writeFile("gieco.json", (0, _stringify["default"])(d._payload.policyInfos), "utf8", function () {
+                              console.log("Written");
+                            });
 
                           case 1:
                           case "end":
@@ -92,5 +96,3 @@ var _default = /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }();
-
-exports["default"] = _default;

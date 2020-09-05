@@ -63710,6 +63710,15 @@ var carrierOptions = [{
 }, {
   name: "Geico",
   value: "geico"
+}, {
+  name: "Progressive",
+  value: "progressive"
+}, {
+  name: "Next Gen Leads",
+  value: "nextgenleads"
+}, {
+  name: "All Web Leads",
+  value: "allwebleads"
 }];
 
 var _default = function _default() {
@@ -63902,7 +63911,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61544" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49970" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

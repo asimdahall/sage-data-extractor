@@ -25,29 +25,25 @@ module.exports = async ({ page, email, password, res }) => {
     
         if (data._url.includes(url)) {
           console.log('I found the URLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL********************', data._url);
-          
-          (data.json().then(d => {
+
+          resolve(data.json().then(async d => {
             fs.writeFile(
               "progressive.json",
-              JSON.stringify(d),
+              JSON.stringify(d._payload.policyInfos),
               "utf8",
               () => {
-                resolve(console.log("Written"));
+                console.log("Written");
               }
             );
           }));
-        }else{
-        reject('Account Billing URL not found');
         }
+        reject('Account Billing URL not found');
       });
     });
   }
 let url = "/api/v1/account";
-await waitForResponse(page, url).then(response => {
-  return response
-}).catch((message) => {
-  console.log('this is catch', message);
-});
+response = await waitForResponse(page, url);
+  return response;
 
   //   await page.click("#MAIN_NAVIGATION_ID-policies");
   //   const policyInfoSelector = ["div.action-menu > a:nth-child(2)"];

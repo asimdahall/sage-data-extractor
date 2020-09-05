@@ -6,55 +6,66 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _fs = _interopRequireDefault(require("fs"));
+var fs = require("fs");
 
-var _puppeteerExtra = _interopRequireDefault(require("puppeteer-extra"));
+var puppeteer = require("puppeteer-extra");
 
-var _express = _interopRequireDefault(require("express"));
+var express = require("express");
 
-var _path = _interopRequireDefault(require("path"));
+var path = require("path");
 
-var _morgan = _interopRequireDefault(require("morgan"));
+var morgan = require("morgan");
 
-var _cors = _interopRequireDefault(require("cors"));
+var cors = require("cors");
 
-var _bodyParser = _interopRequireDefault(require("body-parser"));
+var bodyParser = require("body-parser");
 
-var _index = _interopRequireDefault(require("./carriers/travellers/index.js"));
+var travelers = require("./carriers/travellers/index.js");
 
-var _index2 = _interopRequireDefault(require("./carriers/geico/index.js"));
+var geico = require("./carriers/geico/index.js");
 
-var _puppeteerExtraPluginStealth = _interopRequireDefault(require("puppeteer-extra-plugin-stealth"));
+var progressive = require("./carriers/progressive/index.js");
 
-_puppeteerExtra["default"].use((0, _puppeteerExtraPluginStealth["default"])()); // (async () => {
+var nextGenLeads = require("./carriers/nextgenleads/index.js");
+
+var allWebLeads = require("./carriers/allwebleads/index.js");
+
+var StealthPlugin = require("puppeteer-extra-plugin-stealth");
+
+puppeteer.use(StealthPlugin()); // (async () => {
 //   browser = await puppeteer.launch({
 //     headless: false
 //   });
 //   const page = await browser.newPage();
-//   let response = await geico({
-//     page,
-//     email: "amitbharati1234",
-//     password: "sage!@3A",
-//     response: {}
-//   });
-//   console.log(response);
+//   // let response = await geico({
+//   //   page,
+//   //   email: "amitbharati1234",
+//   //   password: "phuchu!@3A",
+//   //   response: {}
+//   // });
+//  // console.log(response);
 //   // browser.close();
 // })();
 
-
 var browser;
-var app = (0, _express["default"])();
-app.use((0, _morgan["default"])("tiny"));
-app.use((0, _cors["default"])());
-app.use(_bodyParser["default"].urlencoded({
+var app = express();
+app.use(morgan("tiny"));
+app.use(cors());
+app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(_bodyParser["default"].json());
+app.use(bodyParser.json());
 var carrierExtractorMap = {
-  travelers: _index["default"],
-  geico: _index2["default"]
+  travelers: travelers,
+  geico: geico,
+  progressive: progressive,
+  nextgenleads: nextGenLeads,
+  allwebleads: allWebLeads
 };
+console.log('this is carrierextract map', carrierExtractorMap);
 app.get("*", function (req, res) {
+  //console.log(req);
+  //console.log(res);
   res.json({
     test: "OK"
   });
@@ -67,20 +78,24 @@ app.post("/extract/data", /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            //console.log('this is body', req.body);
             _req$body = req.body, email = _req$body.email, password = _req$body.password, carrier = _req$body.carrier;
             _context.prev = 1;
-            _context.next = 4;
-            return _puppeteerExtra["default"].launch();
+            console.log('browser launching');
+            console.log('browser', browser);
+            _context.next = 6;
+            return puppeteer.launch({
+              headless: false
+            });
 
-          case 4:
+          case 6:
             browser = _context.sent;
-            _context.next = 7;
+            _context.next = 9;
             return browser.newPage();
 
-          case 7:
+          case 9:
             page = _context.sent;
-            console.log(carrierExtractorMap, carrier);
-            _context.next = 11;
+            _context.next = 12;
             return carrierExtractorMap[carrier]({
               page: page,
               email: email,
@@ -88,14 +103,22 @@ app.post("/extract/data", /*#__PURE__*/function () {
               res: res
             });
 
-          case 11:
+          case 12:
             response = _context.sent;
-            browser.close();
-            _context.next = 19;
-            break;
+            _context.next = 15;
+            return console.log('reponse received.');
 
           case 15:
-            _context.prev = 15;
+            _context.next = 17;
+            return browser.close();
+
+          case 17:
+            res.json(response);
+            _context.next = 24;
+            break;
+
+          case 20:
+            _context.prev = 20;
             _context.t0 = _context["catch"](1);
             console.log(_context.t0);
             res.status(500).json({
@@ -103,12 +126,12 @@ app.post("/extract/data", /*#__PURE__*/function () {
               message: "There was a problem while logging in/extracting data. Please try again."
             });
 
-          case 19:
+          case 24:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 15]]);
+    }, _callee, null, [[1, 20]]);
   }));
 
   return function (_x, _x2) {
