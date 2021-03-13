@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const travelers = require("./carriers/travellers/index.js");
 const geico = require("./carriers/geico/index.js");
 const progressive = require("./carriers/progressive/index.js");
+const nextGenLeads = require("./carriers/nextgenleads/index.js");
 const StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
 puppeteer.use(StealthPlugin());
@@ -39,7 +40,8 @@ app.use(bodyParser.json());
 const carrierExtractorMap = {
   travelers: travelers,
   geico: geico,
-  progressive: progressive
+  progressive: progressive,
+  nextgenleads: nextGenLeads
 };
 console.log('this is carrierextract map', carrierExtractorMap);
 app.get("*", (req, res) => {
