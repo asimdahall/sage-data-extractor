@@ -37,7 +37,7 @@ app.post("/extract/data", async (req, res) => {
   }
 });
 
-const PORT = 8000;
+const PORT = 9999;
 app.listen(PORT, () => {
   console.log(`App successfully started at port ${PORT}`);
 });
