@@ -1,1 +1,93 @@
-{"basicDetails":{"totalPremium":["Six-Month Total Premium","$450.32"],"billingAccount":"Billing Account","mailingAddress":"2616 HISTORIC CIR MORRISVILLE NC 27560-8183","effectiveDate":["Mar 10, 2020 "," Sep 10, 2020"],"agency":"COVERED BY SAGE LLC 7000 CENTRAL PARKWAY, SUITE 11 ATLANTA GA 30328 Travelers 1-877-872-8737","policyService":"1-877-872-8737"},"discounts":["Continuous Insurance Discount","EFT Discount","Early Quote Discount","Good Payer Discount","Paid in Full Discount","Passive Restraint Discount"],"driverDetails":[{"name":"AJAYA SHARMA","relationShip":"Policyholder","lisenseStatus":"Licensed NC 000040126705","personalDetails":"DOB 02/10/1987, Male, Single"}],"coverages":[{"name":"Bodily Injury Liability","limit":"$100,000 per person $300,000 per incident","premium":"$66"},{"name":"Property Damage Liability","limit":"$100,000 per incident","premium":"$118"},{"name":"Medical Payments","limit":"$1,000 per person","premium":"$6"},{"name":"Combined Uninsured and Underinsured Motorists Bodily Injury","limit":"$100,000 per person $300,000 per incident","premium":"$13"},{"name":"Uninsured Motorists Property Damage","limit":"$50,000 per incident","premium":"$1"}],"vehicleSpecificCoverages":[{"name":"2015 HONDA CR-V LXInfo, Deductibles, and CoverageVehicle Identification Number (VIN)Primary Use Location Lienholder InformationCOVERAGEPREMIUM","vin":"3CZRM3H32FG701472","location":"MORRISVILLE NC","lienHolderInformationL":"WELLS FARGO AUTO PO BOX 29296 PHOENIX AZ 850389296","coverages":[{"name":"Collision","limit":"Actual Cash Value Actual Cash Value","deductible":"less $100 deductible less $100 deductible","premium":"$165"},{"name":"Comprehensive - Other Than Collision","limit":"Actual Cash Value Actual Cash Value","deductible":"less $100 deductible less $100 deductible","premium":"$45"},{"name":"Extended Transportation Expenses","limit":"$30 per day$900 maximum $30 per day$900 maximum","deductible":"","premium":"$13"},{"name":"Towing and Labor Cost - Roadside Assistance","limit":"","deductible":"","premium":"$10"}]}]}
+{
+    "basicDetails": {
+        "totalPremium": [
+            "Six-Month Total Premium",
+            "$450.32"
+        ],
+        "billingAccount": "Billing Account",
+        "mailingAddress": "2616 HISTORIC CIR MORRISVILLE NC 27560-8183",
+        "effectiveDate": [
+            "Mar 10, 2020 ",
+            " Sep 10, 2020"
+        ],
+        "agency": "COVERED BY SAGE LLC 7000 CENTRAL PARKWAY, SUITE 11 ATLANTA GA 30328 Travelers 1-877-872-8737",
+        "policyService": "1-877-872-8737"
+    },
+    "discounts": [
+        "Continuous Insurance Discount",
+        "EFT Discount",
+        "Early Quote Discount",
+        "Good Payer Discount",
+        "Paid in Full Discount",
+        "Passive Restraint Discount"
+    ],
+    "driverDetails": [
+        {
+            "name": "AJAYA SHARMA",
+            "relationShip": "Policyholder",
+            "lisenseStatus": "Licensed NC 000040126705",
+            "personalDetails": "DOB 02/10/1987, Male, Single"
+        }
+    ],
+    "coverages": [
+        {
+            "name": "Bodily Injury Liability",
+            "limit": "$100,000 per person $300,000 per incident",
+            "premium": "$66"
+        },
+        {
+            "name": "Property Damage Liability",
+            "limit": "$100,000 per incident",
+            "premium": "$118"
+        },
+        {
+            "name": "Medical Payments",
+            "limit": "$1,000 per person",
+            "premium": "$6"
+        },
+        {
+            "name": "Combined Uninsured and Underinsured Motorists Bodily Injury",
+            "limit": "$100,000 per person $300,000 per incident",
+            "premium": "$13"
+        },
+        {
+            "name": "Uninsured Motorists Property Damage",
+            "limit": "$50,000 per incident",
+            "premium": "$1"
+        }
+    ],
+    "vehicleSpecificCoverages": [
+        {
+            "name": "2015 HONDA CR-V LXInfo, Deductibles, and CoverageVehicle Identification Number (VIN)Primary Use Location Lienholder InformationCOVERAGEPREMIUM",
+            "vin": "3CZRM3H32FG701472",
+            "location": "MORRISVILLE NC",
+            "lienHolderInformationL": "WELLS FARGO AUTO PO BOX 29296 PHOENIX AZ 850389296",
+            "coverages": [
+                {
+                    "name": "Collision",
+                    "limit": "Actual Cash Value Actual Cash Value",
+                    "deductible": "less $100 deductible less $100 deductible",
+                    "premium": "$165"
+                },
+                {
+                    "name": "Comprehensive - Other Than Collision",
+                    "limit": "Actual Cash Value Actual Cash Value",
+                    "deductible": "less $100 deductible less $100 deductible",
+                    "premium": "$45"
+                },
+                {
+                    "name": "Extended Transportation Expenses",
+                    "limit": "$30 per day$900 maximum $30 per day$900 maximum",
+                    "deductible": "",
+                    "premium": "$13"
+                },
+                {
+                    "name": "Towing and Labor Cost - Roadside Assistance",
+                    "limit": "",
+                    "deductible": "",
+                    "premium": "$10"
+                }
+            ]
+        }
+    ]
+}

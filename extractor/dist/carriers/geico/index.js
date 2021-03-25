@@ -2,23 +2,20 @@
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _default = /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(_ref2) {
+var fs = require("fs");
+
+module.exports = /*#__PURE__*/function () {
+  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(_ref) {
     var page, email, password, res, response;
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            page = _ref2.page, email = _ref2.email, password = _ref2.password, res = _ref2.res;
+            page = _ref.page, email = _ref.email, password = _ref.password, res = _ref.res;
             console.log({
               email: email,
               password: password
@@ -60,7 +57,9 @@ var _default = /*#__PURE__*/function () {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
-                            res.json(d);
+                            fs.writeFile("gieco.json", JSON.stringify(d._payload.policyInfos), "utf8", function () {
+                              console.log("Written");
+                            });
 
                           case 1:
                           case "end":
@@ -89,8 +88,6 @@ var _default = /*#__PURE__*/function () {
   }));
 
   return function (_x) {
-    return _ref.apply(this, arguments);
+    return _ref2.apply(this, arguments);
   };
 }();
-
-exports["default"] = _default;

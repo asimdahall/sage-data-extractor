@@ -6,53 +6,75 @@ var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"))
 
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
 
-var _fs = _interopRequireDefault(require("fs"));
+var fs = require("fs");
 
-var _puppeteerExtra = _interopRequireDefault(require("puppeteer-extra"));
+var puppeteer = require("puppeteer-extra");
 
-var _express = _interopRequireDefault(require("express"));
+var express = require("express");
 
-var _path = _interopRequireDefault(require("path"));
+var path = require("path");
 
-var _morgan = _interopRequireDefault(require("morgan"));
+var morgan = require("morgan");
 
-var _cors = _interopRequireDefault(require("cors"));
+var cors = require("cors");
 
-var _bodyParser = _interopRequireDefault(require("body-parser"));
+var bodyParser = require("body-parser");
 
-var _index = _interopRequireDefault(require("./carriers/travellers/index.js"));
+var travelers = require("./carriers/travellers/index.js");
 
-var _index2 = _interopRequireDefault(require("./carriers/geico/index.js"));
+var geico = require("./carriers/geico/index.js");
 
-var _puppeteerExtraPluginStealth = _interopRequireDefault(require("puppeteer-extra-plugin-stealth"));
+var StealthPlugin = require("puppeteer-extra-plugin-stealth");
 
-_puppeteerExtra["default"].use((0, _puppeteerExtraPluginStealth["default"])()); // (async () => {
-//   browser = await puppeteer.launch({
-//     headless: false
-//   });
-//   const page = await browser.newPage();
-//   let response = await geico({
-//     page,
-//     email: "amitbharati1234",
-//     password: "sage!@3A",
-//     response: {}
-//   });
-//   console.log(response);
-//   // browser.close();
-// })();
+puppeteer.use(StealthPlugin());
+(0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+  var page, response;
+  return _regenerator["default"].wrap(function _callee$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return puppeteer.launch({
+            headless: false
+          });
 
+        case 2:
+          browser = _context.sent;
+          _context.next = 5;
+          return browser.newPage();
 
+        case 5:
+          page = _context.sent;
+          _context.next = 8;
+          return geico({
+            page: page,
+            email: "amitbharati1234",
+            password: "sage!@3A",
+            response: {}
+          });
+
+        case 8:
+          response = _context.sent;
+          console.log(response); // browser.close();
+
+        case 10:
+        case "end":
+          return _context.stop();
+      }
+    }
+  }, _callee);
+}))();
 var browser;
-var app = (0, _express["default"])();
-app.use((0, _morgan["default"])("tiny"));
-app.use((0, _cors["default"])());
-app.use(_bodyParser["default"].urlencoded({
+var app = express();
+app.use(morgan("tiny"));
+app.use(cors());
+app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(_bodyParser["default"].json());
+app.use(bodyParser.json());
 var carrierExtractorMap = {
-  travelers: _index["default"],
-  geico: _index2["default"]
+  travelers: travelers,
+  geico: geico
 };
 app.get("*", function (req, res) {
   res.json({
@@ -60,27 +82,27 @@ app.get("*", function (req, res) {
   });
 });
 app.post("/extract/data", /*#__PURE__*/function () {
-  var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(req, res) {
+  var _ref2 = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
     var _req$body, email, password, carrier, response, page;
 
-    return _regenerator["default"].wrap(function _callee$(_context) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
             _req$body = req.body, email = _req$body.email, password = _req$body.password, carrier = _req$body.carrier;
-            _context.prev = 1;
-            _context.next = 4;
-            return _puppeteerExtra["default"].launch();
+            _context2.prev = 1;
+            _context2.next = 4;
+            return puppeteer.launch();
 
           case 4:
-            browser = _context.sent;
-            _context.next = 7;
+            browser = _context2.sent;
+            _context2.next = 7;
             return browser.newPage();
 
           case 7:
-            page = _context.sent;
+            page = _context2.sent;
             console.log(carrierExtractorMap, carrier);
-            _context.next = 11;
+            _context2.next = 11;
             return carrierExtractorMap[carrier]({
               page: page,
               email: email,
@@ -89,30 +111,30 @@ app.post("/extract/data", /*#__PURE__*/function () {
             });
 
           case 11:
-            response = _context.sent;
+            response = _context2.sent;
             browser.close();
-            _context.next = 19;
+            _context2.next = 18;
             break;
 
           case 15:
-            _context.prev = 15;
-            _context.t0 = _context["catch"](1);
-            console.log(_context.t0);
-            res.status(500).json({
-              success: false,
-              message: "There was a problem while logging in/extracting data. Please try again."
-            });
+            _context2.prev = 15;
+            _context2.t0 = _context2["catch"](1);
+            console.log(_context2.t0); // res.status(500).json({
+            //   success: false,
+            //   message:
+            //     "There was a problem while logging in/extracting data. Please try again."
+            // });
 
-          case 19:
+          case 18:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee, null, [[1, 15]]);
+    }, _callee2, null, [[1, 15]]);
   }));
 
   return function (_x, _x2) {
-    return _ref.apply(this, arguments);
+    return _ref2.apply(this, arguments);
   };
 }());
 var PORT = 8000;
